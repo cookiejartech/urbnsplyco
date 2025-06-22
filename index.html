@@ -49,29 +49,46 @@
             height: 100vh;
             display: flex;
             flex-direction: column;
-            justify-content: center;
+            justify-content: space-between;
             align-items: center;
             text-align: center;
             padding: 2rem;
+            min-height: 600px;
+        }
+
+        .top-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            flex-grow: 0;
+            margin-top: clamp(1rem, 5vh, 3rem);
         }
 
         .logo {
-            font-size: 1.2rem;
+            font-size: clamp(1rem, 2.5vw, 1.2rem);
             font-weight: 300;
             letter-spacing: 0.4em;
             color: rgba(255, 255, 255, 0.95);
-            margin-bottom: 3rem;
-            margin-top: 3rem;
+            margin-bottom: clamp(2rem, 5vh, 3rem);
             text-transform: uppercase;
             animation: fadeInDown 1s ease-out;
         }
 
+        .content-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            flex-grow: 1;
+            justify-content: center;
+            max-width: 100%;
+        }
+
         .main-heading {
-            font-size: clamp(3rem, 8vw, 7rem);
+            font-size: clamp(2.5rem, 7vw, 7rem);
             font-weight: 300;
             line-height: 1.1;
             color: #f5f5f5;
-            margin-bottom: 2rem;
+            margin-bottom: clamp(1.5rem, 4vh, 2rem);
             animation: fadeInUp 1s ease-out 0.3s both;
             text-shadow: 0 2px 8px rgba(0,0,0,0.3);
         }
@@ -81,7 +98,7 @@
         }
 
         .subtitle {
-            font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+            font-size: clamp(1rem, 2.2vw, 1.5rem);
             font-weight: 400;
             line-height: 1.6;
             color: rgba(255, 255, 255, 0.9);
@@ -92,28 +109,29 @@
         }
 
         .countdown-section {
-            margin-top: 3rem;
+            margin-top: clamp(2rem, 4vh, 3rem);
             animation: fadeInUp 1s ease-out 0.9s both;
+            width: 100%;
         }
 
         .countdown-container {
             display: flex;
-            gap: 1.5rem;
+            gap: clamp(1rem, 2vw, 1.5rem);
             justify-content: center;
             flex-wrap: wrap;
-            margin-top: 2rem;
+            margin-top: clamp(1.5rem, 3vh, 2rem);
         }
 
         .countdown-item {
             display: flex;
             flex-direction: column;
             align-items: center;
-            padding: 1.5rem 1rem;
+            padding: clamp(1rem, 2.5vh, 1.5rem) clamp(0.8rem, 1.5vw, 1rem);
             background: rgba(255, 255, 255, 0.1);
             border: 2px solid rgba(255, 255, 255, 0.2);
             border-radius: 15px;
             backdrop-filter: blur(10px);
-            min-width: 100px;
+            min-width: clamp(80px, 15vw, 100px);
             transition: all 0.3s ease;
         }
 
@@ -124,7 +142,7 @@
         }
 
         .countdown-number {
-            font-size: 2.5rem;
+            font-size: clamp(2rem, 4vw, 2.5rem);
             font-weight: 600;
             color: #ff6b6b;
             text-shadow: 0 2px 8px rgba(255, 107, 107, 0.3);
@@ -133,7 +151,7 @@
         }
 
         .countdown-label {
-            font-size: 0.9rem;
+            font-size: clamp(0.75rem, 1.5vw, 0.9rem);
             font-weight: 400;
             color: rgba(255, 255, 255, 0.8);
             text-transform: uppercase;
@@ -141,26 +159,29 @@
         }
 
         .launch-text {
-            margin-top: 2rem;
-            margin-bottom: 2rem;
-            font-size: 1.1rem;
+            margin-top: clamp(1.5rem, 3vh, 2rem);
+            font-size: clamp(1rem, 2vw, 1.1rem);
             color: rgba(255, 255, 255, 0.7);
             font-weight: 300;
         }
 
+        .bottom-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            flex-grow: 0;
+            margin-bottom: clamp(1rem, 3vh, 2rem);
+        }
+
         .social-links {
-            position: absolute;
-            bottom: 2rem;
-            left: 50%;
-            transform: translateX(-50%);
             display: flex;
             gap: 1.5rem;
             animation: fadeIn 1s ease-out 1.2s both;
         }
 
         .social-link {
-            width: 50px;
-            height: 50px;
+            width: clamp(40px, 8vw, 50px);
+            height: clamp(40px, 8vw, 50px);
             border: 2px solid rgba(255, 255, 255, 0.3);
             border-radius: 50%;
             display: flex;
@@ -254,6 +275,66 @@
             }
         }
 
+        /* Specific responsive breakpoints */
+        @media (max-height: 700px) {
+            .container {
+                min-height: 500px;
+            }
+            
+            .top-section {
+                margin-top: 1rem;
+            }
+            
+            .logo {
+                margin-bottom: 1.5rem;
+            }
+            
+            .main-heading {
+                margin-bottom: 1rem;
+            }
+            
+            .countdown-section {
+                margin-top: 1.5rem;
+            }
+            
+            .launch-text {
+                margin-top: 1rem;
+            }
+            
+            .bottom-section {
+                margin-bottom: 1rem;
+            }
+        }
+
+        @media (max-height: 500px) {
+            .container {
+                justify-content: center;
+                gap: 1rem;
+            }
+            
+            .top-section, .content-section, .bottom-section {
+                flex-grow: 0;
+            }
+            
+            .logo {
+                margin-bottom: 1rem;
+                margin-top: 0;
+            }
+            
+            .main-heading {
+                font-size: clamp(2rem, 6vw, 4rem);
+                margin-bottom: 0.5rem;
+            }
+            
+            .countdown-section {
+                margin-top: 1rem;
+            }
+            
+            .launch-text {
+                margin-top: 0.5rem;
+            }
+        }
+
         @media (max-width: 768px) {
             .container {
                 padding: 1rem;
@@ -264,24 +345,50 @@
             }
             
             .countdown-item {
-                min-width: 80px;
+                min-width: 70px;
                 padding: 1rem 0.5rem;
-            }
-            
-            .countdown-number {
-                font-size: 2rem;
-            }
-            
-            .countdown-label {
-                font-size: 0.8rem;
             }
             
             .main-heading {
                 margin-bottom: 1.5rem;
             }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0.5rem;
+            }
             
-            .social-links {
-                bottom: 1rem;
+            .countdown-container {
+                gap: 0.5rem;
+            }
+            
+            .countdown-item {
+                min-width: 60px;
+                padding: 0.8rem 0.3rem;
+            }
+        }
+
+        /* Very tall screens */
+        @media (min-height: 1000px) {
+            .top-section {
+                margin-top: 4rem;
+            }
+            
+            .logo {
+                margin-bottom: 4rem;
+            }
+            
+            .countdown-section {
+                margin-top: 4rem;
+            }
+            
+            .launch-text {
+                margin-top: 3rem;
+            }
+            
+            .bottom-section {
+                margin-bottom: 3rem;
             }
         }
     </style>
@@ -291,39 +398,49 @@
     <div class="particles" id="particles"></div>
     
     <div class="container">
-        <div class="logo">URBN SPLY CO</div>
+        <div class="top-section">
+            <div class="logo">URBN SPLY CO</div>
+        </div>
         
-        <h1 class="main-heading">
-            <span>Your Lifestyle,</span>
-            <span>Reimagined.</span>
-        </h1>
-        
-        <p class="subtitle">
-            Coming Soon: A Curated Collection<br>
-            of Lifestyle Brands for Past, Present<br>
-            and Future
-        </p>
-        
-        <div class="countdown-section">
-            <div class="countdown-container">
-                <div class="countdown-item">
-                    <div class="countdown-number" id="days">00</div>
-                    <div class="countdown-label">Days</div>
+        <div class="content-section">
+            <h1 class="main-heading">
+                <span>Your Lifestyle,</span>
+                <span>Reimagined.</span>
+            </h1>
+            
+            <p class="subtitle">
+                Coming Soon: A Curated Collection<br>
+                of Lifestyle Brands for Past, Present<br>
+                and Future
+            </p>
+            
+            <div class="countdown-section">
+                <div class="countdown-container">
+                    <div class="countdown-item">
+                        <div class="countdown-number" id="days">00</div>
+                        <div class="countdown-label">Days</div>
+                    </div>
+                    <div class="countdown-item">
+                        <div class="countdown-number" id="hours">00</div>
+                        <div class="countdown-label">Hours</div>
+                    </div>
+                    <div class="countdown-item">
+                        <div class="countdown-number" id="minutes">00</div>
+                        <div class="countdown-label">Minutes</div>
+                    </div>
+                    <div class="countdown-item">
+                        <div class="countdown-number" id="seconds">00</div>
+                        <div class="countdown-label">Seconds</div>
+                    </div>
                 </div>
-                <div class="countdown-item">
-                    <div class="countdown-number" id="hours">00</div>
-                    <div class="countdown-label">Hours</div>
-                </div>
-                <div class="countdown-item">
-                    <div class="countdown-number" id="minutes">00</div>
-                    <div class="countdown-label">Minutes</div>
-                </div>
-                <div class="countdown-item">
-                    <div class="countdown-number" id="seconds">00</div>
-                    <div class="countdown-label">Seconds</div>
-                </div>
+                <p class="launch-text">Until Launch</p>
             </div>
-            <p class="launch-text">Until Launch</p>
+        </div>
+        
+        <div class="bottom-section">
+            <div class="social-links">
+                <!-- Add your social links here if needed -->
+            </div>
         </div>
     </div>
 
